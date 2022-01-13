@@ -1,7 +1,7 @@
 <div class="blogs-container">
   <% @blogs.each do |blog| %>
     <a href= <%= blog_path(blog.id) %>>
-      <%= render partial: blog %>
+      <%= render partial: blog, locals: {favorite: @favorites.find_by(blog_id: blog.id)} %>
     </a>
   <% end %>
 </div>
