@@ -1,2 +1,15 @@
 <h1>Blogs#confirm</h1>
-<p>Find me in app/views/blogs/confirm.html.erb</p>
+<div class="form-wapper">
+  <%= form_with(model: @blog, local: true, class: "form") do |f| %>
+    <div class="form-items">
+      <p><%= f.label :title %></p>
+      <p><%= f.text_field :title, class: "form-control", required: true, readonly: true %></p>
+    </div>
+    <div class="form-items">
+      <p><%= f.label :content %></p>
+      <p><%= f.text_area :content, class: "form-control", required: true, maxlength: 140, readonly: true %></p>
+    </div>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+    <%= f.submit "戻る", class: "btn btn-info", name: "back" %>
+  <% end %>
+</div>

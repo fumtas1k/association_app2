@@ -1,2 +1,6 @@
 <h1>Blogs#show</h1>
-<p>Find me in app/views/blogs/show.html.erb</p>
+<div class="blogs-container">
+  <%= render partial: @blog %>
+</div>
+<%= link_to "編集", edit_blog_path(@blog.id), class: "btn btn-info" %>
+<%= link_to "削除", blog_path(@blog.id), method: :delete, class: "btn btn-danger" %>

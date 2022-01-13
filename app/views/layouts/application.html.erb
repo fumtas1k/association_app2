@@ -18,6 +18,7 @@
         </div>
         <ul class="link-list">
           <% if logged_in? %>
+            <li><%= link_to "createblog", new_blog_path %></li>
             <li><%= link_to "mypage", user_path(current_user.id) %>
             <li><%= link_to "logout", session_path(current_user.id), method: :delete %></li>
           <% else %>

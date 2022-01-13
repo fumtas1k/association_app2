@@ -1,0 +1,10 @@
+<div class="blog-wrapper">
+  <div class="blog-header">
+    <span class="blog-user"><%= blog.user.name %></span>
+    <span class="blog_createdat"><%= time_ago_in_words(blog.created_at) %></span>
+  </div>
+  <div class="blog-items">
+    <p class="blog-ttl"><span>title:</span> <%= blog.title %></p>
+    <p class="blog-content"><%= blog.content %></p>
+  </div>
+</div>

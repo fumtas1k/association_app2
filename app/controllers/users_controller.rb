@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = current_user
+    @blogs = @user.blogs.order(created_at: :desc)
   end
   def destroy
   end
