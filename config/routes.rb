@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  rout "blogs#index"
+  resources :blogs do
+    collection do
+      post :confirm
+    end
+  end
+  resources :users, only: %i[show new create destroy]
+  resources :sessions, only: %i[new create destroy]
+  resources :favorites, only: %i[create destroy]
 end
