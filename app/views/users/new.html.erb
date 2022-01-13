@@ -1,0 +1,33 @@
+<% provide(:title, "signup") %>
+
+<div class="form-wrapper">
+  <%= form_with model: @user, local: true do |f| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger" id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> </h2>
+        <% @user.errors.full_messages.each do |msg| %>
+          <ul>
+            <li><%= msg %></li>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-item">
+      <p><%= f.label :name %></p>
+      <p><%= f.text_field :name, required: true, class: "form-control" %></p>
+    </div>
+    <div class="form-item">
+      <p><%= f.label :email %></p>
+      <p><%= f.email_field :email, required: true, class: "form-control"%></p>
+    </div>
+    <div class="form-item">
+      <p><%= f.label :password %></p>
+      <p><%= f.password_field :password, required: true, minlength: 6, class: "form-control" %></p>
+    </div>
+    <div class="form-item">
+      <p><%= f.label :password_confirmation %></p>
+      <p><%= f.password_field :password_confirmatin, required: true, class: "form-control" %></p>
+    </div>
+    <%= f.submit "登録", class: "btn btn-primary" %>
+  <% end %>
+</div>

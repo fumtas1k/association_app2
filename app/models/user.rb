@@ -16,11 +16,11 @@
 class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 30}
   validates :email, presence: true, length: {maximum: 255},
-                    format: {with: /\A[\w.!#$%&'*+\/=?^`{|}~-]+@[\w-]+(?:\.[\w-]+)*\z/i}
+                    format: {with: /\A[\w.!#$%&'*+\/=?^`{|}~-]+@[\w-]+\.[\w-]+\z/i},
                     uniqueness: true
   before_validation {email.downcase!}
   has_secure_password
-  validates :password, length: {minlength: 6}
+  validates :password, length: {minimum: 6}
 
   has_many :blogs
   has_many :favorites, dependent: :destroy

@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>AssociationApp2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="nav">
+        <div class="header-logo">
+          <%= link_to "Blogs", blogs_path %>
+        </div>
+        <ul class="link-list">
+          <% if logged_in? %>
+            <li><%= link_to "mypage", user_path(current_user.id) %>
+            <li><%= link_to "logout", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+          <li><%= link_to "signup", new_user_path %></li>
+          <li><%= link_to "login", new_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <% flash.each do |key, value| %>
+        <% alert = key == "danger" ? "danger" : "success" %>
+        <%= content_tag :div, value, class: "alert alert-#{alert}" %>
+      <% end %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
